@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========== Twilight Glass - Design System 2026 ========== */
+
+:root {
+  /* Twilight Palette */
+  --bg-deep: #020617;
+  --bg-twilight: #1e1b4b;
+  --accent-glow: #7c3aed;
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  /* Legacy aliases */
+  --twilight-deep: #020617;
+  --twilight-glow-purple: #1e1b4b;
+  --twilight-glow-blue: #1e3a8a;
+  --twilight-text-primary: #ffffff;
+  --twilight-text-secondary: #94a3b8;
+  
+  font-family: 'Cairo', 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: dark;
+  color: var(--text-primary);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  background: radial-gradient(circle at 50% 0%, var(--bg-twilight) 0%, var(--bg-deep) 70%);
+  background-attachment: fixed;
+  color: var(--twilight-text-primary);
+}
+#root {
+  min-height: 100vh;
+  position: relative;
+}
+
+/* خلفية التوهج - للطبقة الثابتة في الخلف */
+.bg-glow {
+  background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #020617 100%);
+}
+
+/* تأثير الزجاج الحقيقي */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- Hover glow effect --- */
+.hover-glow:hover {
+  text-shadow: 0 0 8px var(--accent-glow);
+  color: #e2d9fd;
+  transition: all 0.3s ease;
+}
+
+/* --- Remove default borders / outlines --- */
+table, td, th, fieldset {
+  border: none;
+}
+input, button, textarea {
+  outline: none;
+}
+
+/* Two Blur Blobs - معطلة مؤقتاً لاختبار النقر */
+/*
+body::before, body::after { content: ''; position: fixed; width: 600px; height: 600px; border-radius: 50%; pointer-events: none !important; z-index: -1; }
+body::before { top: -200px; left: -200px; background: rgba(124, 58, 237, 0.2); filter: blur(100px); }
+body::after { bottom: -200px; right: -200px; background: rgba(37, 99, 235, 0.2); filter: blur(100px); }
+*/
+
+a {
+  font-weight: 500;
+  color: #a78bfa;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #c4b5fd;
+}
+
+h1, h2, h3 {
+  color: var(--twilight-text-primary);
+}
+p {
+  color: var(--twilight-text-secondary);
+}
+
+/* إلغاء أي خلفية رمادية افتراضية للأزرار - ضمان قابلية النقر */
+button {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  font-family: inherit;
+  pointer-events: auto;
+}
+button:focus,
+button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.5);
+}
+
+/* Zero Borders - Chat scroll area */
+.chat-scroll-area {
+  scroll-behavior: smooth;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overflow-anchor: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.chat-scroll-area::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-scroll-area::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+.chat-scroll-area::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.chat-scroll-area::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Twilight Utility Classes */
+.twilight-heading {
+  color: var(--twilight-text-primary);
+  font-weight: 700;
+}
+.twilight-text-secondary {
+  color: var(--twilight-text-secondary);
+}
+
+/* Purple glow for headings - breaks monotony */
+.heading-glow {
+  color: #c4b5fd;
+  text-shadow: 0 0 20px rgba(196, 181, 253, 0.4);
+}
+
+/* --- Arabic-friendly chat bubbles --- */
+.chat-bubble {
+  text-align: start;
+  line-height: 1.8;
+}
+
+/* --- Ensure clickable elements have pointer cursor --- */
+button,
+a,
+[role="button"],
+.nav-button,
+.menu-button {
+  cursor: pointer;
+}
